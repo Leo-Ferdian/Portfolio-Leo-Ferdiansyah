@@ -92,13 +92,12 @@ modalCloses.forEach((modalClose) =>{
 })
 
 /*==================== PORTFOLIO SWIPER  ====================*/
-let swiperPortfolio = new Swiper('.portfolio_container', {
+let swiperPortfolio = new Swiper('.portfolio_container , .certificate_container', {
 	cssMode: true,
-	loop : true,
 
 	navigation: {
 		nextEl:'.swiper-button-next',
-		pervEl:'.swiper-button-prev',
+		prevEl:'.swiper-button-prev',
 	},
 	pagination: {
 		el: '.swiper-pagination',
@@ -111,7 +110,7 @@ let swiperPortfolio = new Swiper('.portfolio_container', {
 const swiperTestimonial = new Swiper('.testimonial_container', {
 	loop : true,
 	grabCursor: true,
-	spaceBetween: 48,
+	spaceBetween: 40,
 
 	pagination: {
 		el: '.swiper-pagination',
@@ -119,31 +118,65 @@ const swiperTestimonial = new Swiper('.testimonial_container', {
 		dynamicBullets: true,
 	},
 	breakpoints:{
-		568:{
+		768:{
 			slidesPerView: 2,
 		}
 	}
 });
 
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-const sections = document.querySelectorAll('section[id]')
+/*==================== SEND EMAIL ====================*/
+function openGmail() {
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var project = document.getElementById('project').value;
+    var message = document.getElementById('message').value;
 
-function scrollActive(){
-	const scrollY = window.pageYOffset;
+    var subject = "Contact Form Submission";
+        var body = "Name: " + name + "\nEmail: " + email + "\nProject: " + project + "\nMessage: " + message;
+        var mailtoURL = 'https://mail.google.com/mail/?view=cm&to=leoferdiansyah28@gmail.com&subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
-	sections.forEach(current =>{
-		const sectionHeight = current.offsetHeight
-		const sectionTop = current.offsetTop - 50;
-		sectionId = current.getAttribute('id')
-
-		if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-			document.querySelector('.nav_menu a[href*=' + sectionId + ']').classList.add('active-link')
-		}else{
-			document.querySelector('.nav_menu a[href*=' + sectionId + ']').classList.remove('active-link')
-		}
-	})
+        window.location.href = mailtoURL;
 }
-window.addEventListener('scroll', scrollActive)
+
+
+/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+const sections = document.querySelectorAll('section[id]');
+
+function scrollActive() {
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 50;
+        let sectionId = current.getAttribute('id');
+        const menuLink = document.querySelector('.nav_menu a[href*="' + sectionId + '"]');
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            menuLink.classList.add('active-link');
+        } else {
+            menuLink.classList.remove('active-link');
+        }
+    });
+}
+
+function scrollToSection(sectionId) {
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        const offsetTop = targetSection.offsetTop - 40;
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    }
+}
+
+document.querySelectorAll('.nav_menu a[href^="#"]').forEach(item => {
+    item.addEventListener('click', function (e) {
+        e.preventDefault();
+        const sectionId = this.getAttribute('href').substring(1);
+        scrollToSection(sectionId);
+    });
+});
+
+window.addEventListener('scroll', scrollActive);
+
 
 /*==================== CHANGE BACKGROUND HEADER ====================*/
 function scrollHeader(){
