@@ -319,6 +319,7 @@ a {
 }
 .button:hover {
 	background-color: var(--first-color-alt);
+	cursor: pointer;
 }
 .button_icon {
 	font-size: 1.25rem;
@@ -768,6 +769,13 @@ a {
 	position: relative;
 	margin-right: auto;
 	margin-left: auto;
+}
+.project_button:hover .button_icon{
+	transform: translateX(0.25rem);
+}
+.project_button:hover{
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+	transform: scale(102%);
 }
 
 /*==================== TESTIMONIAL ====================*/
