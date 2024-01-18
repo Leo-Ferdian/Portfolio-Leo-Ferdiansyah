@@ -222,12 +222,21 @@ if (selectedTheme) {
     themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
 }
 
-// Activate / deactivate the theme manually with the button
+// Tambahkan efek animasi ketika tombol di klik
 themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
-    document.body.classList.toggle(darkTheme)
-    themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme', getCurrentTheme())
-    localStorage.setItem('selected-icon', getCurrentIcon())
-})
+    // Tambahkan kelas untuk efek animasi
+    themeButton.classList.add('clicked');
+
+    // Tambahkan atau hapus tema gelap / ikon
+    document.body.classList.toggle(darkTheme);
+    themeButton.classList.toggle(iconTheme);
+
+    // Simpan tema dan ikon yang dipilih oleh pengguna
+    localStorage.setItem('selected-theme', getCurrentTheme());
+    localStorage.setItem('selected-icon', getCurrentIcon());
+
+    // Hapus kelas animasi setelah beberapa saat
+    setTimeout(() => {
+        themeButton.classList.remove('clicked');
+    }, 300);
+});
