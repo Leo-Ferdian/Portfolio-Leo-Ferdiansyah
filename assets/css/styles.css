@@ -770,7 +770,6 @@ a {
 	justify-self: center;
 	object-fit: cover;
 	top: 1.2rem;
-	right: 2rem;
 	position: relative;
 	margin-right: auto;
 	margin-left: auto;
@@ -917,6 +916,7 @@ a {
 	border-radius: 0.4rem;
 	z-index: var(--z-tooltip);
 	transition: 0.4s;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
 }
 .scrollup:hover{
 	background-color: var(--first-color-alt);
@@ -1156,6 +1156,9 @@ a {
 	.project_data{
 		padding-top: .8rem;
 	}
+	.project_img{
+		right: 2.2rem;
+	}
 	.footer_container{
 		text-align: center;
 	}
@@ -1227,5 +1230,10 @@ a {
 	}
 	.contact_inputs{
 		grid-template-columns: repeat(2, 1fr);
+	}
+	.project_img{
+		right: 4rem;
+		width: 270px;
+		height: 270px;
 	}
 }
