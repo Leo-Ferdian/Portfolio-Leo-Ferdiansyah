@@ -753,7 +753,7 @@ a {
 	padding-top: 3rem;
 	overflow: hidden;
 }
-.project_titlr{
+.project_title{
 	font-size: var(--h2-font-size);
 	margin-bottom: var(--mb-0-75);
 }
