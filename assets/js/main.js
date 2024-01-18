@@ -135,7 +135,7 @@ function openGmail() {
         var body = "Name: " + name + "\nEmail: " + email + "\nProject: " + project + "\nMessage: " + message;
         var mailtoURL = 'https://mail.google.com/mail/?view=cm&to=leoferdiansyah28@gmail.com&subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
-        window.location.href = mailtoURL;
+        window.open(mailtoURL, '_blank');
 }
 
 
